@@ -182,3 +182,6 @@ Copy files to Amazon S3 bucket.
 Remove objects from CloudFront edge caches.
 
     aws cloudfront create-invalidation --distribution-id <id> --paths '/*'
+
+---
+© Patrick Bougie

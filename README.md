@@ -69,7 +69,7 @@ Create a new function:
 - Runtime: `Node.js` (already selected)
 - Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
 
-Add the code from `cloudfront-dir-index.js` and deploy.
+Add the code from **[cloudfront-dir-index.js](cloudfront-dir-index.js)** and deploy.
 
 Add a **CloudFront** trigger:
 
@@ -88,7 +88,7 @@ Create a new function:
 - Runtime: `Node.js` (already selected)
 - Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
 
-Add the code from `cloudfront-security-headers.js` and deploy.
+Add the code from **[cloudfront-security-headers.js](cloudfront-security-headers.js)** and deploy.
 
 Add a **CloudFront** trigger:
 
@@ -107,7 +107,7 @@ Create a new function:
 - Runtime: `Node.js` (already selected)
 - Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
 
-Add the code from `cloudfront-www-to-apex.js` and deploy.
+Add the code from **[cloudfront-www-to-apex.js](cloudfront-www-to-apex.js)** and deploy.
 
 Add a **CloudFront** trigger:
 
@@ -118,7 +118,7 @@ Deploy to Lambda@Edge and link to CloudFront distribution.
 
 ### Redirects (optional)
 
-Redirects RegEx paths listed in `redirects.json` that is hosted in the root of a website on S3. See file for format.
+Redirects RegEx paths listed in **[redirects.json](redirects.json)** that is hosted in the root of a website on S3. See file for format.
 
 Create a new function:
 
@@ -126,7 +126,7 @@ Create a new function:
 - Runtime: `Node.js` (already selected)
 - Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
 
-Add the code from `cloudfront-redirects.js` and deploy.
+Add the code from **[cloudfront-redirects.js](cloudfront-redirects.js)** and deploy.
 
 Add a **CloudFront** trigger:
 
@@ -137,7 +137,7 @@ Deploy to Lambda@Edge and link to CloudFront distribution.
 
 ### Basic Auth (optional)
 
-Provides Basic Authentication to website. Usernames and passwords are stored with the Lambda function in `credentials.json`. See file for format.
+Provides Basic Authentication to website. Usernames and passwords are stored with the Lambda function in **[credentials.json](credentials.json)**. See file for format.
 
 Create a new function:
 
@@ -145,7 +145,7 @@ Create a new function:
 - Runtime: `Node.js` (already selected)
 - Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
 
-Add the code from `cloudfront-basic-auth.js` and deploy.
+Add the code from **[cloudfront-basic-auth.js](cloudfront-basic-auth.js)** and deploy.
 
 Add a **CloudFront** trigger:
 

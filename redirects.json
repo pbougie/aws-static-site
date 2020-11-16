@@ -1,0 +1,10 @@
+[
+  {
+    "source": "^/old_folder/$",
+    "destination": "/new_folder/"
+  },
+  {
+    "source": "^/folder/$",
+    "destination": "https://domain.tld/folder/"
+  }
+]

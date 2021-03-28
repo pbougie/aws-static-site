@@ -116,6 +116,25 @@ Add a **CloudFront** trigger:
 
 Deploy to Lambda@Edge and link to CloudFront distribution.
 
+### Accept-Language (optional)
+
+Redirects root path to `/fr/` if `Accept-Language` starts with `fr`. Otherwise it redirects to `/en/`.
+
+Create a new function:
+
+- Function name: `cloudfront-accept-language`
+- Runtime: `Node.js` (already selected)
+- Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
+
+Add the code from **[cloudfront-accept-language.js](cloudfront-accept-language.js)** and deploy.
+
+Add a **CloudFront** trigger:
+
+- Distribution: select the distribution ID
+- CloudFront event: `Viewer Request`
+
+Deploy to Lambda@Edge and link to CloudFront distribution. You might have to modify the function for your site’s languages. You can create an additional CloudFront behavior with path pattern `/` to attach this function if you have another `Viewer Request` event.
+
 ### Redirects (optional)
 
 Redirects RegEx paths listed in **[redirects.json](redirects.json)** that is hosted in the root of a website on S3. See file for format.

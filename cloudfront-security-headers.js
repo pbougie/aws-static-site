@@ -16,7 +16,7 @@ exports.handler = async (event) => {
 
   // Permissions-Policy
   headers['permissions-policy'] = [{
-    value: 'camera=(), geolocation=(), microphone=(), payment=()'
+    value: 'camera=(), geolocation=(), interest-cohort=(), microphone=(), payment=()'
   }];
 
   // Referrer-Policy

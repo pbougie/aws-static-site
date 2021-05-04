@@ -53,125 +53,18 @@ The reason the selected HTTP error code is `403` is because we are accessing S3 
 
 Create an IAM Role for executing your Lambda@Edge functions. Name your role `cloudfront-lambda@edge-role`. Attach policies `AWSLambdaEdgeExecutionRole` and `AmazonS3ReadOnlyAccess`. Edit the trust relationship and add [this policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html#lambda-edge-permissions-function-execution). See [documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html) for more information.
 
-## [AWS Lambda](https://aws.amazon.com/lambda/)
+## [AWS CloudFront Functions](https://aws.amazon.com/cloudfront/) + [AWS Lambda@Edge](https://aws.amazon.com/lambda/)
 
-Create a new function from scratch for each of the following scripts.
+Install a combination of CloudFront functions and Lambda@Edge functions for each static site as per your needs:
 
-You can only run `cloudfront-www-to-apex` or `cloudfront-basic-auth` but not both because you can only install one function for each CloudFront event.
-
-### Dir Index
-
-For URI paths that don't have an extension: (1) adds a trailing slash if missing; (2) adds `index.html`.
-
-Create a new function:
-
-- Function name: `cloudfront-dir-index`
-- Runtime: `Node.js`
-- Execution role: **Use an existing role** : `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-dir-index.js](cloudfront-dir-index.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Origin Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
-
-### Redirect `www` to Apex
-
-Redirects `www.domain.tld` to `domain.tld`.
-
-Create a new function:
-
-- Function name: `cloudfront-www-to-apex`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-www-to-apex.js](cloudfront-www-to-apex.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Viewer Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
-
-### Security Headers
-
-Adds various security headers to the HTTP response.
-
-Create a new function:
-
-- Function name: `cloudfront-security-headers`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-security-headers.js](cloudfront-security-headers.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Viewer Response`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
-
-### Accept-Language (optional)
-
-Redirects root path to `/fr/` if `Accept-Language` starts with `fr`. Otherwise it redirects to `/en/`.
-
-Create a new function:
-
-- Function name: `cloudfront-accept-language`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-accept-language.js](cloudfront-accept-language.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Viewer Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution. You might have to modify the function for your site’s languages. You can create an additional CloudFront behavior with path pattern `/` to attach this function if you have another `Viewer Request` event.
-
-### Basic Auth (optional)
-
-Provides Basic Authentication to website. Usernames and passwords are stored with the Lambda function in **[credentials.json](credentials.json)**. See file for format.
-
-Create a new function:
-
-- Function name: `cloudfront-basic-auth`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-basic-auth.js](cloudfront-basic-auth.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Viewer Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
-
-### Redirects (optional)
-
-Redirects RegEx paths listed in **[redirects.json](redirects.json)** that is hosted in the root of a website on S3. See file for format.
-
-Create a new function:
-
-- Function name: `cloudfront-redirects`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
-
-Add the code from **[cloudfront-redirects.js](cloudfront-redirects.js)** and deploy.
-
-Add a **CloudFront** trigger:
-
-- Distribution: select the distribution ID
-- CloudFront event: `Origin Response`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
+Function|Type|Event
+---|---|---
+[Accept-Language](cloudfront/accept-language)|CloudFront Function|Viewer Request
+[Basic Auth](lambda@edge/basic-auth)|Lambda@Edge|Viewer Request
+[Dir Index](lambda@edge/dir-index)|Lambda@Edge|Origin Request
+[Redirect www to Apex](cloudfront/redirect-www-to-apex)|CloudFront Function|Viewer Request
+[Redirects](lambda@edge/redirects)|Lambda@Edge|Origin Response
+[Security Headers](cloudfront/security-headers)|CloudFront Function|Viewer Response
 
 ## [Amazon Route 53](https://aws.amazon.com/route53/) (continued)
 

@@ -53,18 +53,20 @@ The reason the selected HTTP error code is `403` is because we are accessing S3 
 
 Create an IAM Role for executing your Lambda@Edge functions. Name your role `cloudfront-lambda@edge-role`. Attach policies `AWSLambdaEdgeExecutionRole` and `AmazonS3ReadOnlyAccess`. Edit the trust relationship and add [this policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html#lambda-edge-permissions-function-execution). See [documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html) for more information.
 
-## [AWS CloudFront Functions](https://aws.amazon.com/cloudfront/) + [AWS Lambda@Edge](https://aws.amazon.com/lambda/)
+## [AWS CloudFront Functions](https://docs.aws.amazon.com/console/cloudfront/functions/) + [AWS Lambda@Edge](https://aws.amazon.com/lambda/edge/)
 
-Install a combination of CloudFront functions and Lambda@Edge functions for each static site as per your needs:
+Install a combination of CloudFront Functions and Lambda@Edge Functions for each static site as per your needs:
 
-Function|Type|Event
----|---|---
-[Accept-Language](cloudfront/accept-language)|CloudFront Function|Viewer Request
-[Basic Auth](lambda@edge/basic-auth)|Lambda@Edge|Viewer Request
-[Dir Index](lambda@edge/dir-index)|Lambda@Edge|Origin Request
-[Redirect www to Apex](cloudfront/redirect-www-to-apex)|CloudFront Function|Viewer Request
-[Redirects](lambda@edge/redirects)|Lambda@Edge|Origin Response
-[Security Headers](cloudfront/security-headers)|CloudFront Function|Viewer Response
+Function|Function Type|Event Type|Cache Behavior
+---|---|---|---
+[Accept-Language](cloudfront/accept-language)|CloudFront|Viewer Request|/
+[Basic Auth](lambda@edge/basic-auth)|Lambda@Edge|Viewer Request|Default (*)
+[Directory Index](lambda@edge/directory-index)|Lambda@Edge|Origin Request|Default (*)
+[Redirect www to Apex](cloudfront/redirect-www-to-apex)|CloudFront|Viewer Request|Default (*)
+[Redirects](lambda@edge/redirects)|Lambda@Edge|Origin Response|Default (*)
+[Security Headers](cloudfront/security-headers)|CloudFront|Viewer Response|Default (*)
+
+You can only use a CloudFront event once for each cache behavior so you may need to use Lambda@Edge functions to get around the limitation. **Directory Index** could be a CloudFront function but the **Viewer Request** event type is used for other purposes.
 
 ## [Amazon Route 53](https://aws.amazon.com/route53/) (continued)
 

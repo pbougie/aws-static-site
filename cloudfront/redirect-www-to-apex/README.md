@@ -1,20 +1,16 @@
-# AWS Static Site
-## CloudFront Function
-### Redirect `www` to Apex
+# CloudFront Function
+## Redirect `www` to Apex
 
 Redirects `www.domain.tld` to `domain.tld`.
 
-Create a new function:
+Create CloudFront function:
 
-- Function name: `cloudfront-www-to-apex`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
+- Function Name: `redirect-www-to-apex`
+- Comment: `Redirect www to apex domain`
+- Source Code: [redirect-www-to-apex.js](redirect-www-to-apex.js)
 
-Add the code from **[cloudfront-www-to-apex.js](cloudfront-www-to-apex.js)** and deploy.
-
-Add a **CloudFront** trigger:
+Publish then associate with one or more CloudFront distributions:
 
 - Distribution: select the distribution ID
-- CloudFront event: `Viewer Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
+- Event Type: `Viewer Request`
+- Cache Behavior: `Default (*)`

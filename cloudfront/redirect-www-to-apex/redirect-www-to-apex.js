@@ -1,25 +1,25 @@
-// Lambda@Edge
-// Function name: cloudfront-www-to-apex
-// CloudFront event: Viewer Request
+// Function Type: CloudFront Function
+// Function Name: redirect-www-to-apex
+// CloudFront Event: Viewer Request
 
-exports.handler = async (event) => {
+function handler(event) {
 
-  const request = event.Records[0].cf.request;
-  const hostname = request.headers.host[0].value;
+  var request = event.request;
+  var uri = request.uri;
+  var host = request.headers.host.value;
 
-  if (hostname.includes('www.')) {
+  if (host.includes('www.')) {
     return {
-      status: '301',
+      statusCode: 301,
       statusDescription: 'Moved Permanently',
       headers: {
-        location: [{
-          key: 'Location',
-          value: 'https://' + hostname.replace('www.', '') + request.uri
-        }]
+        location: {
+          value: 'https://' + host.replace('www.', '') + uri
+        }
       }
     };
   }
 
   return request;
 
-};
+}

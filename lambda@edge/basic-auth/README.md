@@ -1,20 +1,19 @@
-# AWS Static Site
-## Lambda@Edge Function
-### Basic Auth
+# Lambda@Edge Function
+## Basic Auth
 
 Provides Basic Authentication to website. Usernames and passwords are stored with the Lambda function in **[credentials.json](credentials.json)**. See file for format.
 
-Create a new function:
+Create Lambda@Edge function:
 
-- Function name: `cloudfront-basic-auth`
+- Function Name: `cloudfront-basic-auth`
+- Description: `Basic Authentication`
 - Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
+- Execution Role: **Use existing role** `cloudfront-lambda@edge-role`
 
-Add the code from **[cloudfront-basic-auth.js](cloudfront-basic-auth.js)** and deploy.
+Add the code from **[basic-auth.js](basic-auth.js)** and deploy.
 
 Add a **CloudFront** trigger:
 
 - Distribution: select the distribution ID
-- CloudFront event: `Viewer Request`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
+- Event Type: `Viewer Request`
+- Cache Behavior: `Default (*)`

@@ -1,6 +1,6 @@
-// Lambda@Edge
-// Function name: cloudfront-basic-auth
-// CloudFront event: Viewer Request
+// Function Type: Lambda@Edge Function
+// Function Name: cloudfront-basic-auth
+// CloudFront Event: Viewer Request
 
 exports.handler = async (event) => {
 

@@ -1,6 +1,6 @@
-// Lambda@Edge
-// Function name: cloudfront-redirects
-// CloudFront event: Origin Response
+// Function Type: Lambda@Edge Function
+// Function Name: cloudfront-redirects
+// CloudFront Event: Origin Response
 
 const aws = require('aws-sdk');
 

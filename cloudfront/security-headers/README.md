@@ -1,20 +1,16 @@
-# AWS Static Site
-## CloudFront Function
-### Security Headers
+# CloudFront Function
+## Security Headers
 
 Adds various security headers to the HTTP response.
 
-Create a new function:
+Create CloudFront function:
 
-- Function name: `cloudfront-security-headers`
-- Runtime: `Node.js`
-- Execution role: **Use existing role** `cloudfront-lambda@edge-role`
+- Function Name: `security-headers`
+- Comment: `HTTP security headers`
+- Source Code: [security-headers.js](security-headers.js)
 
-Add the code from **[cloudfront-security-headers.js](cloudfront-security-headers.js)** and deploy.
-
-Add a **CloudFront** trigger:
+Publish then associate with one or more CloudFront distributions:
 
 - Distribution: select the distribution ID
-- CloudFront event: `Viewer Response`
-
-Deploy to Lambda@Edge and link to CloudFront distribution.
+- Event Type: `Viewer Response`
+- Cache Behavior: `Default (*)`

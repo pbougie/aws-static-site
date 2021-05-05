@@ -1,6 +1,6 @@
-// Lambda@Edge
-// Function name: cloudfront-dir-index
-// CloudFront event: Origin Request
+// Function Type: Lambda@Edge Function
+// Function Name: cloudfront-directory-index
+// CloudFront Event: Origin Request
 
 exports.handler = async (event) => {
 

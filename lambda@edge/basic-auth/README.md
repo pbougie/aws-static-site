@@ -12,7 +12,7 @@ Create Lambda@Edge function:
 
 Add the code from **[basic-auth.js](basic-auth.js)** and deploy.
 
-Add a **CloudFront** trigger:
+Publish version and add a **CloudFront** trigger:
 
 - Distribution: select the distribution ID
 - Event Type: `Viewer Request`

@@ -12,7 +12,7 @@ Create Lambda@Edge function:
 
 Add the code from **[directory-index.js](directory-index.js)** and deploy.
 
-Add a **CloudFront** trigger:
+Publish version and add a **CloudFront** trigger:
 
 - Distribution: select the distribution ID
 - Event Type: `Origin Request`

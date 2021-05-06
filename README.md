@@ -62,6 +62,7 @@ Function|Function Type|Event Type|Cache Behavior
 [Accept-Language](cloudfront/accept-language)|CloudFront|Viewer Request|/
 [Basic Auth](lambda@edge/basic-auth)|Lambda@Edge|Viewer Request|Default (*)
 [Directory Index](lambda@edge/directory-index)|Lambda@Edge|Origin Request|Default (*)
+[Redirect Alternate](cloudfront/redirect-alternate)|CloudFront|Viewer Request|Default (*)
 [Redirect www to Apex](cloudfront/redirect-www-to-apex)|CloudFront|Viewer Request|Default (*)
 [Redirects](lambda@edge/redirects)|Lambda@Edge|Origin Response|Default (*)
 [Security Headers](cloudfront/security-headers)|CloudFront|Viewer Response|Default (*)

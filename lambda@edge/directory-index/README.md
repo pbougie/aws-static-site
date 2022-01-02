@@ -3,7 +3,7 @@
 
 For URI paths that don't have an extension: (1) add a trailing `/` if missing and redirect; (2) add `index.html` and retrieve origin object.
 
-Create Lambda@Edge function:
+Create **Lambda@Edge** function:
 
 - Function Name: `cloudfront-directory-index`
 - Description: `Directory Index`

@@ -3,7 +3,7 @@
 
 Provides Basic Authentication to website. Usernames and passwords are stored with the Lambda function in **[credentials.json](credentials.json)**. See file for format.
 
-Create Lambda@Edge function:
+Create **Lambda@Edge** function:
 
 - Function Name: `cloudfront-basic-auth`
 - Description: `Basic Authentication`

@@ -3,7 +3,7 @@
 
 Redirects RegEx paths listed in **[redirects.json](redirects.json)** that is hosted in the root of a website on S3. See file for format.
 
-Create Lambda@Edge function:
+Create **Lambda@Edge** function:
 
 - Function Name: `cloudfront-redirects`
 - Description: `Redirects`

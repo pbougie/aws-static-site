@@ -55,9 +55,9 @@ Create an IAM Role for executing your Lambda@Edge functions. Name your role `clo
 
 ## [AWS CloudFront Functions](https://docs.aws.amazon.com/console/cloudfront/functions/) + [AWS Lambda@Edge](https://aws.amazon.com/lambda/edge/)
 
-Install a combination of CloudFront Functions and Lambda@Edge Functions for each static site as per your needs:
+Install a combination of _CloudFront Functions_ and _Lambda@Edge Functions_ in **CloudFront Behaviors** for each static site as per your needs:
 
-Function|Function Type|Event Type|Cache Behavior
+Function|Function Type|Event Type|Path Pattern
 ---|---|---|---
 [Accept-Language](cloudfront/accept-language)|CloudFront|Viewer Request|/
 [Basic Auth](lambda@edge/basic-auth)|Lambda@Edge|Viewer Request|Default (*)

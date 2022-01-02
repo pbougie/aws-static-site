@@ -6,5 +6,10 @@
   {
     "source": "^/folder/$",
     "destination": "https://domain.tld/folder/"
+  },
+  {
+    "source": "^(\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/.*\/)$",
+    "destination": "/new_path$1",
+    "comment": "Redirects /yyyy/mm/dd/title/ to /new_path/yyyy/mm/dd/title/"
   }
 ]

@@ -30,15 +30,22 @@ exports.handler = async (event) => {
 
   try {
     const redirects = await fetchRedirects(request.origin.s3);
+    // Strip index.html because added in another function
+    const uri = request.uri.replace('index.html', '');
 
     for (const { source, destination } of redirects) {
-      // Strip index.html because added in another Lambda@Edge function
-      let uri = request.uri.replace('index.html', '');
-
       if (source.test(uri)) {
+        let new_destination;
+
+        if (uri.match(source)) {
+          new_destination = uri.replace(source, destination);
+        } else {
+          new_destination = destination;
+        }
+
         response.status = '301';
         response.statusDescription = 'Moved Permanently';
-        response.headers['location'] = [{ value: destination }];
+        response.headers['location'] = [{ value: new_destination }];
 
         return response;
       }

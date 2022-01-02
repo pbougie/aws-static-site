@@ -1,0 +1,6 @@
+{
+  "region": "us-east-1",
+  "bucket": "any-bucket",
+  "key-prefix": "any-form/",
+  "success-url": "https://example.com/thanks.html"
+}

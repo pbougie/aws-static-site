@@ -1,4 +1,4 @@
-# Static Websites with AWS S3 + CloudFront + Lambda@Edge
+# Static Websites with AWS CloudFront + S3
 
 This article describes the installation and configuration of a static website on [Amazon Web Services](https://aws.amazon.com/). Includes redirection of `HTTP` to `HTTPS`, redirection of `www` sub-domain to the apex domain, redirects listed in a `json` file, updated security headers, basic authentication, custom error page, etc.
 

@@ -7,7 +7,7 @@ Create **CloudFront** function:
 
 - Function Name: `accept-language`
 - Comment: `Redirect to language`
-- Source Code: [accept-language.js](accept-language.js)
+- Source Code: [index.js](index.js)
 
 Publish then associate with one or more **CloudFront** distributions:
 

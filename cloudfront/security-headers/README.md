@@ -7,7 +7,7 @@ Create **CloudFront** function:
 
 - Function Name: `security-headers`
 - Comment: `HTTP security headers`
-- Source Code: [security-headers.js](security-headers.js)
+- Source Code: [index.js](index.js)
 
 Publish then associate with one or more **CloudFront** distributions:
 

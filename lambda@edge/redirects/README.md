@@ -10,7 +10,7 @@ Create **Lambda@Edge** function:
 - Runtime: `Node.js`
 - Execution Role: **Use existing role** `cloudfront-lambda@edge-role`
 
-Add the code from **[redirects.js](redirects.js)** and deploy.
+Add the code from **[index.js](index.js)** and deploy.
 
 Publish version and add a **CloudFront** trigger:
 

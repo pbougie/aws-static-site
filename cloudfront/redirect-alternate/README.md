@@ -7,7 +7,7 @@ Create **CloudFront** function:
 
 - Function Name: `redirect-alternate`
 - Comment: `Redirect to an alternate domain`
-- Source Code: [redirect-alternate.js](redirect-alternate.js)
+- Source Code: [index.js](index.js)
 
 Publish then associate with one or more **CloudFront** distributions:
 

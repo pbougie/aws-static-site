@@ -7,7 +7,7 @@ Create **CloudFront** function:
 
 - Function Name: `redirect-www-to-apex`
 - Comment: `Redirect www to apex domain`
-- Source Code: [redirect-www-to-apex.js](redirect-www-to-apex.js)
+- Source Code: [index.js](index.js)
 
 Publish then associate with one or more **CloudFront** distributions:
 

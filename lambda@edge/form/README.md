@@ -3,25 +3,41 @@
 
 Save form data to S3 as JSON.
 
-Update **CloudFront** distribution with a new behavior:
+1. Create a form that submits to `<path>`.
 
-- Path Pattern: `<path>/`
+1. Create form submission success page.
 
-Save form configuration with source code in `<path>/config.json`.
-See [config.json](config.json) for format.
+1. Update **CloudFront** distribution with a new behavior:
 
-Create **Lambda@Edge** function:
+    - Path Pattern: `<path>/` (form submission and JSON config path)
+    - Origin: Default S3 origin
+    - Viewer Protocol Policy: Redirect HTTP to HTTPS
+    - Allowed HTTP Methods: GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE
+    - Cache Policy: Caching disabled
 
-- Function Name: `cloudfront-form`
-- Description: `Save form to S3 as JSON`
-- Runtime: `Node.js`
-- Execution Role: **Use existing role** `cloudfront-lambda@edge-role`
+1. Save form configuration with source code in `<path>/config.json`.
 
-Add the code from **[index.js](index.js)** and deploy.
+    ```
+    {
+      "region": "ca-central-1",
+      "bucket": "<s3-bucket-name>",
+      "key-prefix": "<key-prefix-to-differentiate-forms>",
+      "success-url": "<success-url-for-redirection>"
+    }
+    ```
 
-Publish version and add a **CloudFront** trigger:
+1. Create **Lambda@Edge** function:
 
-- Distribution: select the distribution ID
-- Event Type: `Origin Request`
-- Cache Behavior: `<path>/`
-- Include Body: _yes_
+    - Function Name: `cloudfront-form`
+    - Description: `Save form to S3 as JSON`
+    - Runtime: `Node.js`
+    - Execution Role: **Use existing role** `cloudfront-lambda@edge-role`
+
+1. Add the code from **[index.js](index.js)** and deploy.
+
+1. Publish version and add a **CloudFront** trigger:
+
+    - Distribution: select the distribution ID
+    - Event Type: `Origin Request`
+    - Cache Behavior: `<path>/`
+    - Include Body: _yes_
